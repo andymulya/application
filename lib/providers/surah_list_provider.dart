@@ -23,7 +23,6 @@ class SurahListProvider with ChangeNotifier{
 	}
 	void setDataSurahList(List<SurahListModel> dataSurahList){
 		_dataSurahList = dataSurahList;
-		notifyListeners();
 	}
 	void setErrorMessage(String errorMessage){
 		_errorMessage = errorMessage;
@@ -33,7 +32,7 @@ class SurahListProvider with ChangeNotifier{
 
 		setIsLoading(true);
 
-		final fetchData = await SurahListServices().getData();
+		final fetchData = await SurahListServices.getSurahList();
 
 		if(fetchData is List<SurahListModel>){
 			setDataSurahList(fetchData);

@@ -1,7 +1,5 @@
-import 'dart:io';
-
+import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
-import 'package:application/services/http_overrides.dart';
 import 'package:application/views/pages/surah_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'views/pages/surah_list_page.dart';
 
 void main(){
-  HttpOverrides.global = MyHttpOverrides();
   runApp(const Application());
 }
 
@@ -21,6 +18,7 @@ class Application extends StatelessWidget{
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SurahListProvider()),
+        ChangeNotifierProvider(create: (context) => SurahDetailProvider()),
       ],
       child: MaterialApp(
         initialRoute: SurahListPage.routeName,

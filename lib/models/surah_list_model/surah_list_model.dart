@@ -1,29 +1,47 @@
-import 'name_model.dart';
-import 'relevation_model.dart';
-
 class SurahListModel {
-  int? number;
-  int? sequence;
-  int? numberOfVerses;
-  Name? name;
-  Revelation? revelation;
+  
+  String name, place, type;
+  NameTranslations nameTranslations;
+  int numberOfAyah, numberOfSurah, recitation;
 
   SurahListModel({
-      this.number,
-      this.sequence,
-      this.numberOfVerses,
-      this.name,
-      this.revelation,
-    });
+    required this.name,
+    required this.nameTranslations,
+    required this.numberOfAyah,
+    required this.numberOfSurah,
+    required this.place,
+    required this.recitation,
+    required this.type
+  });
 
-  SurahListModel.fromJson(Map<String, dynamic> json) {
-    number = json['number'];
-    sequence = json['sequence'];
-    numberOfVerses = json['numberOfVerses'];
-    name = json['name'] != null ? Name.fromJson(json['name']) : null;
-    revelation = json['revelation'] != null
-        ? Revelation.fromJson(json['revelation'])
-        : null;
+  factory SurahListModel.fromJson(Map<String, dynamic> json){
+    return SurahListModel(
+      name: json['name'], 
+      nameTranslations: NameTranslations.fromJson(json['name_translations']), 
+      numberOfAyah: json['number_of_ayah'], 
+      numberOfSurah: json['number_of_surah'], 
+      place: json['place'], 
+      recitation: json['recitation'], 
+      type: json['type'],
+    );
   }
 
+}
+
+class NameTranslations{
+  String ar, en, id;
+
+  NameTranslations({
+    required this.ar,
+    required this.en,
+    required this.id,
+  });
+
+  factory NameTranslations.fromJson(Map<String, dynamic> json){
+    return NameTranslations(
+      ar: json['ar'], 
+      en: json['en'], 
+      id: json['id'],
+    );
+  }
 }
