@@ -8,7 +8,7 @@ import '../exception.dart';
 class SurahDetailService{
 
 	static Future<Object> getDetailSurah(int? numSurah) async {
-		final url = Uri.parse('https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/$numSurah.json');
+		final url = Uri.parse('https://raw.githubusercontent.com/andymulya/quranJson/master/surah/$numSurah.json');
 
 		try{
 			final response = await http.get(url);

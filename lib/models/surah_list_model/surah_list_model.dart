@@ -1,8 +1,8 @@
 class SurahListModel {
   
-  String name, place, type;
+  String name, place, type, recitation;
   NameTranslations nameTranslations;
-  int numberOfAyah, numberOfSurah, recitation;
+  int numberOfAyah, numberOfSurah;
 
   SurahListModel({
     required this.name,

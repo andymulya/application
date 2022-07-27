@@ -3,6 +3,7 @@ import 'package:application/providers/surah_list_provider.dart';
 import 'package:application/views/pages/surah_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'views/pages/surah_list_page.dart';
 
@@ -21,6 +22,18 @@ class Application extends StatelessWidget{
         ChangeNotifierProvider(create: (context) => SurahDetailProvider()),
       ],
       child: MaterialApp(
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xFFbeeef1),
+          appBarTheme: AppBarTheme(
+            elevation: 0,
+            backgroundColor: const Color(0xFF00a3ad),
+            titleTextStyle: GoogleFonts.bebasNeue(
+              letterSpacing: 1.4,
+              fontSize: 16,
+            ),
+
+          ),
+        ),
         initialRoute: SurahListPage.routeName,
         routes: {
           SurahListPage.routeName : (context) => const SurahListPage(),

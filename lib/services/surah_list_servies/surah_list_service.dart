@@ -7,11 +7,11 @@ import 'package:http/http.dart' as http;
 class SurahListServices{
 
 	static Future<Object> getSurahList() async {
-		final url = Uri.parse('https://raw.githubusercontent.com/penggguna/QuranJSON/master/quran.json');
+		final url = Uri.parse('https://raw.githubusercontent.com/andymulya/quranJson/master/surah_list.json');
 
 		try{
 			final response = await http.get(url);
-			List<dynamic> resultDecode = json.decode(response.body)['data'];
+			List<dynamic> resultDecode = json.decode(response.body) as List<dynamic>;
 			List<SurahListModel> result = resultDecode.map((e) => SurahListModel.fromJson(e)).toList();
 
 			return result;
