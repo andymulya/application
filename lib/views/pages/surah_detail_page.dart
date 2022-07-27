@@ -1,5 +1,6 @@
 import 'package:application/providers/surah_detail_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/surah_detail_widget.dart';
@@ -59,15 +60,31 @@ class SurahDetailPage extends StatelessWidget{
 					child: Center(
 						child: SizedBox(
 							width: 200,
-							child: Text(
-							  	fetchData.detailSurah[0].ar, 
-							  	textAlign: TextAlign.center,
-							  	style: const TextStyle(
-							  		color: Colors.white,
-							  		fontFamily: 'Isep Misbah',
-							  		fontSize: 18,
-							  		fontWeight: FontWeight.bold,
-							  	),
+							height: 150,
+							child: (fetchData.detailSurah.length != 129) ? 
+							const Image(
+								image: AssetImage('assets/images/kaligrafi.png'),
+							) :
+							Center(
+								child: Text('At - Taubah', 
+									style: GoogleFonts.armata(
+										fontSize: 17,
+										fontWeight: FontWeight.bold,
+										color: Colors.white,
+										shadows: <Shadow>[
+											Shadow(
+												offset: const Offset(1, -1),
+												blurRadius: 0.5,
+												color: Colors.black.withOpacity(0.5),
+											),
+											Shadow(
+												offset: const Offset(1, -1),
+												blurRadius: 0.5,
+												color: Colors.black.withOpacity(0.5)
+											),
+										]
+									),
+								),
 							),
 						),
 					),

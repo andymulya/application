@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ButtonCustomProvider with ChangeNotifier{
-	bool _isTap = true;
+	bool _isTap = false;
 
 	bool get isTap => _isTap;
 
