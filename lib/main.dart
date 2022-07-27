@@ -1,5 +1,7 @@
+import 'package:application/providers/button_custom_provider.dart';
 import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
+import 'package:application/views/pages/splash_screen_page.dart';
 import 'package:application/views/pages/surah_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,6 +22,7 @@ class Application extends StatelessWidget{
       providers: [
         ChangeNotifierProvider(create: (context) => SurahListProvider()),
         ChangeNotifierProvider(create: (context) => SurahDetailProvider()),
+        ChangeNotifierProvider(create: (context) => ButtonCustomProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
@@ -34,8 +37,9 @@ class Application extends StatelessWidget{
 
           ),
         ),
-        initialRoute: SurahListPage.routeName,
+        initialRoute: SplashScreen.routeName,
         routes: {
+          SplashScreen.routeName : (context) => const SplashScreen(),
           SurahListPage.routeName : (context) => const SurahListPage(),
           SurahDetailPage.routeName : (context) => const SurahDetailPage(),
         },
