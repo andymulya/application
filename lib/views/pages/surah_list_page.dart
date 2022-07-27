@@ -51,7 +51,7 @@ class SurahListPage extends StatelessWidget{
 										return ListTile(
 											dense: true,
 											title: Text(data.dataSurahList![index].name),
-											subtitle: Text('Ayat | ${data.dataSurahList![index].numberOfAyah}'),
+											subtitle: Text('${data.dataSurahList![index].numberOfAyah} Ayat || ${data.dataSurahList![index].place}'),
 											trailing: Text(data.dataSurahList![index].nameTranslations.ar),
 											selectedTileColor: Colors.black,
 											onTap: () {
