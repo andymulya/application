@@ -23,7 +23,7 @@ class Application extends StatelessWidget{
       ],
       child: MaterialApp(
         theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFFbeeef1),
+          scaffoldBackgroundColor: const Color(0xFFeafffe),
           appBarTheme: AppBarTheme(
             elevation: 0,
             backgroundColor: const Color(0xFF00a3ad),

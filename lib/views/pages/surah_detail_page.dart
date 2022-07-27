@@ -14,27 +14,7 @@ class SurahDetailPage extends StatelessWidget{
 		final getDetailSurah = Provider.of<SurahDetailProvider>(context);
 		
 		return Scaffold(
-			body: SafeArea(
-				child: Column(
-					children: [
-						Container(
-							alignment: Alignment.topLeft,
-							child: IconButton(
-								icon: Icon(
-									Icons.arrow_back,
-									color: Colors.grey.shade700,
-								),
-								onPressed: () => Navigator.pop(context),
-							),
-						),
-
-						//UI Ayah
-						Expanded(
-							child: _ui(context ,getDetailSurah),
-						),
-					],
-				),
-			),
+			body: _ui(context, getDetailSurah),
 		);
 	}
 
@@ -50,10 +30,27 @@ class SurahDetailPage extends StatelessWidget{
 
 		return Column(
 			children: [
+				//Button back
+				SafeArea(
+				  child: Container(
+				  	alignment: Alignment.topLeft,
+				  	color: const Color(0xFF00a3ad),
+				  	child: IconButton(
+				  		icon: const Icon(
+				  			Icons.arrow_back,
+				  			color: Colors.white,
+				  		),
+				  		onPressed: () => Navigator.pop(context),
+				  	),
+				  ),
+				),
+
 				//Bingkai Bismillah
 				Container(
 					height: (MediaQuery.of(context).orientation == Orientation.portrait) ? 150 : 120,
 					decoration: const BoxDecoration(
+						color: Color(0xFF00a3ad),
+						borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100), bottomRight: Radius.circular(100)),
 						image: DecorationImage(
 							fit: BoxFit.fill,
 							image: AssetImage('assets/images/bismillah.png'),
@@ -66,12 +63,11 @@ class SurahDetailPage extends StatelessWidget{
 							  	fetchData.detailSurah[0].ar, 
 							  	textAlign: TextAlign.center,
 							  	style: const TextStyle(
-							  		color: Color(0xFF010465),
+							  		color: Colors.white,
 							  		fontFamily: 'Isep Misbah',
 							  		fontSize: 18,
 							  		fontWeight: FontWeight.bold,
 							  	),
-							  	softWrap: false,
 							),
 						),
 					),

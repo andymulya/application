@@ -54,7 +54,7 @@ class SurahDetailWidget extends StatelessWidget{
 								    	ar, 
 								    	textAlign: TextAlign.end,
 								    	style: GoogleFonts.manuale(
-								    		fontSize: 20,
+								    		fontSize: 25,
 								    	),
 								  ),
 								),
@@ -67,7 +67,13 @@ class SurahDetailWidget extends StatelessWidget{
 						margin: const EdgeInsets.only(left: 10,top: 10),
 						alignment: Alignment.topLeft,
 						width: double.infinity,
-						child: Text(id),
+						child: Text(
+							id,
+							style: GoogleFonts.ibarraRealNova(
+								fontSize: 16,
+								//color: Color(),
+							),
+						),
 					),
 				],
 			),
