@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>{
 					),
 
 					Center(
-						child: Lottie.asset('assets/lottie/muslim.json', width: 400, height: 400),
+						child: Lottie.asset('assets/lottie/muslim.json', width: 400, height: 350),
 					),
 
 					Positioned(

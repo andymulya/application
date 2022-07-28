@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:application/providers/button_custom_provider.dart';
 import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
@@ -37,13 +39,17 @@ class Application extends StatelessWidget{
 
           ),
         ),
-        initialRoute: SplashScreen.routeName,
         routes: {
           SplashScreen.routeName : (context) => const SplashScreen(),
           SurahListPage.routeName : (context) => const SurahListPage(),
           SurahDetailPage.routeName : (context) => const SurahDetailPage(),
         },
         debugShowCheckedModeBanner: false,
+        home: LayoutBuilder(
+          builder: (context, constraints) {
+            return (Platform.isAndroid && Platform.isIOS) ? const SplashScreen() : const SurahListPage();
+          },
+        ),
       ),
     );
   } 
