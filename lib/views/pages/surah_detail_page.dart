@@ -1,6 +1,4 @@
 import 'package:application/providers/surah_detail_provider.dart';
-import 'package:application/services/exception.dart';
-import 'package:application/views/widgets/socked_exception_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -28,9 +26,9 @@ class SurahDetailPage extends StatelessWidget{
 			);
 		}
 		if(fetchData.errorMessage != null){
-			if(fetchData.errorMessage is FetchDataException){
-				return const SockedExceptionWidget();
-			}
+			return Center(
+				child: Text(fetchData.errorMessage.toString()),
+			);
 		}
 
 		return Column(

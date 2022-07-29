@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -17,8 +16,8 @@ class SurahDetailService{
 			List<SurahDetailModel> result = resultDecode.map((e) => SurahDetailModel.fromJson(e)).toList();
 			return result;
 
-		}on SocketException{
-			return FetchDataException(message: 'No Internet Connection');
+		}catch(e){
+			return FetchDataException(message: e.toString());
 		}
 	}
 
