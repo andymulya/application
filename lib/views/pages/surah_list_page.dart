@@ -1,9 +1,8 @@
-import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
+import 'package:application/views/widgets/surah_list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'surah_detail_page.dart';
 
 class SurahListPage extends StatelessWidget{
 	static const routeName = '/surahListPage';
@@ -11,7 +10,6 @@ class SurahListPage extends StatelessWidget{
 
 	@override
 	Widget build(BuildContext context){
-		final getSurahDetail = Provider.of<SurahDetailProvider>(context);
 
 		return Scaffold(
 			appBar: AppBar(
@@ -45,34 +43,62 @@ class SurahListPage extends StatelessWidget{
 								margin: const EdgeInsets.only(right: 10, left: 10),
 								height: (MediaQuery.of(context).orientation == Orientation.portrait) ?
 								MediaQuery.of(context).size.height * 0.80 : MediaQuery.of(context).size.height * 0.70,
-								child: ListView.builder(
-									itemCount: data.dataSurahList!.length,
-									itemBuilder: (_, index){
-										return ListTile(
-											dense: true,
-											title: Text(data.dataSurahList![index].name),
-											subtitle: Text('${data.dataSurahList![index].numberOfAyah} Ayat || ${data.dataSurahList![index].place}'),
-											trailing: Text(data.dataSurahList![index].nameTranslations.ar),
-											selectedTileColor: Colors.black,
-											onTap: () {
-												getSurahDetail.setNumberSurahSelected(data.dataSurahList![index].numberOfSurah);
-												getSurahDetail.getSurahDetail();
-												Navigator.pushNamed(context, SurahDetailPage.routeName);
-											},
-											leading: Container(
-												width: 40,
-												height: 40,
-												decoration: const BoxDecoration(
-													image: DecorationImage(
-														image: AssetImage('assets/images/arabic.png'),
-													),
-												),
-												child: Center(
-													child: Text(data.dataSurahList![index].numberOfSurah.toString()),
-												),
-											),
-										);
-									},
+								child: LayoutBuilder(
+									builder: (_, constraints){
+										if(constraints.maxWidth <= 600){
+
+											return ListView.builder(
+												itemCount: data.dataSurahList!.length,
+												itemBuilder: (_, index){
+													return SurahListTileWidget(
+														numberOfSurah: data.dataSurahList![index].numberOfSurah,
+														numberOfAyah: data.dataSurahList![index].numberOfAyah, 
+														nameSurahId: data.dataSurahList![index].name, 
+														nameSurahAr: data.dataSurahList![index].nameTranslations.ar, 
+														place: data.dataSurahList![index].place,
+													);
+												}
+											);
+										}else if(constraints.maxWidth <= 800){
+
+											return GridView.builder(
+												itemCount: data.dataSurahList!.length,
+												gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+													childAspectRatio: 5,
+													crossAxisCount: 2,
+												), 
+												itemBuilder: (_, index){
+													return SurahListTileWidget(
+														numberOfSurah: data.dataSurahList![index].numberOfSurah,
+														numberOfAyah: data.dataSurahList![index].numberOfAyah, 
+														nameSurahId: data.dataSurahList![index].name, 
+														nameSurahAr: data.dataSurahList![index].nameTranslations.ar, 
+														place: data.dataSurahList![index].place,
+													);
+												},
+											);
+
+										}else{
+
+											return GridView.builder(
+												itemCount: data.dataSurahList!.length,
+												gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+													childAspectRatio: 3,
+													crossAxisCount: 4,
+												), 
+												itemBuilder: (_, index){
+													return SurahListTileWidget(
+														numberOfSurah: data.dataSurahList![index].numberOfSurah,
+														numberOfAyah: data.dataSurahList![index].numberOfAyah, 
+														nameSurahId: data.dataSurahList![index].name, 
+														nameSurahAr: data.dataSurahList![index].nameTranslations.ar, 
+														place: data.dataSurahList![index].place,
+													);
+												},
+											);
+
+										}
+									}
 								),
 							),
 						],
