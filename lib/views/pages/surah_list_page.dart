@@ -3,6 +3,9 @@ import 'package:application/views/widgets/surah_list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../services/exception.dart';
+import '../widgets/socked_exception_widget.dart';
+
 
 class SurahListPage extends StatelessWidget{
 	static const routeName = '/surahListPage';
@@ -24,9 +27,9 @@ class SurahListPage extends StatelessWidget{
 						);
 					}
 					if(data.errorMessage != null){
-						return Center(
-							child: Text(data.errorMessage.toString()),
-						);
+						if(data.errorMessage is FetchDataException){
+							return const SockedExceptionWidget();
+						}
 					}
 					
 					return Column(

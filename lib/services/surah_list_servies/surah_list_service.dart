@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:application/models/surah_list_model/surah_list_model.dart';
 import 'package:application/services/exception.dart';
@@ -16,8 +17,8 @@ class SurahListServices{
 
 			return result;
 
-		}catch(e){
-			return FetchDataException(message: e.toString());
+		}on SocketException{
+			return FetchDataException(message: 'No Internet Connection');
 		}
 	}
 }

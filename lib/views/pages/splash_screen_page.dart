@@ -1,6 +1,7 @@
-import 'package:application/views/widgets/button_custom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+import 'surah_list_page.dart';
 
 class SplashScreen extends StatefulWidget{
 	static const routeName = '/splashScreen';
@@ -13,6 +14,16 @@ class SplashScreen extends StatefulWidget{
 }
 
 class _SplashScreenState extends State<SplashScreen>{
+
+	@override
+	  void initState() {
+
+	  	Future.delayed(const Duration(seconds: 10),(){
+	  		Navigator.pushReplacementNamed(context, SurahListPage.routeName);
+	  	});
+
+	    super.initState();
+	  }
 
 	@override
 	Widget build(BuildContext context){
@@ -35,14 +46,6 @@ class _SplashScreenState extends State<SplashScreen>{
 					Center(
 						child: Lottie.asset('assets/lottie/muslim.json', width: 400, height: 350),
 					),
-
-					Positioned(
-						bottom: MediaQuery.of(context).size.height * 0.1,
-						left: MediaQuery.of(context).size.width * 0,
-						right: MediaQuery.of(context).size.width * 0,
-						child: const ButtonCustomWidget(),
-					),
-
 				],
 			),
 		);

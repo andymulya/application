@@ -1,4 +1,3 @@
-import 'package:application/providers/button_custom_provider.dart';
 import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
 import 'package:application/views/pages/splash_screen_page.dart';
@@ -22,7 +21,6 @@ class Application extends StatelessWidget{
       providers: [
         ChangeNotifierProvider(create: (context) => SurahListProvider()),
         ChangeNotifierProvider(create: (context) => SurahDetailProvider()),
-        ChangeNotifierProvider(create: (context) => ButtonCustomProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
