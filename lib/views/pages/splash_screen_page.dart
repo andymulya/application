@@ -3,30 +3,17 @@ import 'package:lottie/lottie.dart';
 
 import 'surah_list_page.dart';
 
-class SplashScreen extends StatefulWidget{
-	static const routeName = '/splashScreen';
 
+class SplashScreen extends StatelessWidget{
+	static const routeName = '/splashScreen';
 	const SplashScreen({super.key});
 
 	@override
-	State<SplashScreen> createState() => _SplashScreenState();
-
-}
-
-class _SplashScreenState extends State<SplashScreen>{
-
-	@override
-	  void initState() {
-
+	Widget build(BuildContext context){
+	  	
 	  	Future.delayed(const Duration(seconds: 10),(){
 	  		Navigator.pushReplacementNamed(context, SurahListPage.routeName);
 	  	});
-
-	    super.initState();
-	  }
-
-	@override
-	Widget build(BuildContext context){
 
 		return Scaffold(
 			body: Stack(
