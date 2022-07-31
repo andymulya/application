@@ -2,6 +2,7 @@ import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
 import 'package:application/views/pages/splash_screen_page.dart';
 import 'package:application/views/pages/surah_detail_page.dart';
+import 'package:application/views/pages/tasbih_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -40,6 +41,7 @@ class Application extends StatelessWidget{
           SplashScreen.routeName : (context) => const SplashScreen(),
           SurahListPage.routeName : (context) => const SurahListPage(),
           SurahDetailPage.routeName : (context) => const SurahDetailPage(),
+          TasbihPage.routeName : (context) => const TasbihPage(),
         },
         debugShowCheckedModeBanner: false,
       ),

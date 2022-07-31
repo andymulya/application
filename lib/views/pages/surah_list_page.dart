@@ -1,4 +1,6 @@
 import 'package:application/providers/surah_list_provider.dart';
+import 'package:application/views/pages/tasbih_page.dart';
+import 'package:application/views/widgets/button_custom_tasbih_widget.dart';
 import 'package:application/views/widgets/surah_list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +16,11 @@ class SurahListPage extends StatelessWidget{
 		return Scaffold(
 			appBar: AppBar(
 				title: const Text("Al - Qur'an"),
+				actions: [
+					ButtonCustomTasbihWidget(
+						onTap: () => Navigator.pushNamed(context, TasbihPage.routeName),
+					),
+				],
 			),
 
 			body: Consumer<SurahListProvider>(
