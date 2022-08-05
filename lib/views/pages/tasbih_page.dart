@@ -1,21 +1,18 @@
-import 'package:application/views/widgets/button_count_widget.dart';
-import 'package:application/views/widgets/button_reset_widget.dart';
+import 'package:application/providers/tasbih_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class TasbihPage extends StatefulWidget{
-	static const routeName = '/tasbih';
+import '../widgets/button_count_widget.dart';
+import '../widgets/button_reset_widget.dart';
+
+class TasbihPage extends StatelessWidget{
+	static const routeName = '/tasbih_page';
 	const TasbihPage({super.key});
-
-	@override
-	State<TasbihPage> createState() => _TasbihPageState();
-}
-
-class _TasbihPageState extends State<TasbihPage>{
-
-	int _count = 0;
 
 	@override 
 	Widget build(BuildContext context){
+		final tasbihCount = Provider.of<TasbihProvider>(context);
+
 		return Scaffold(
 			backgroundColor: const Color(0xFF00a3ad),
 			body: SafeArea(
@@ -64,7 +61,7 @@ class _TasbihPageState extends State<TasbihPage>{
 													]
 												),
 												child: Center(
-													child: Text('$_count', 
+													child: Text(tasbihCount.count.toString(), 
 													  	style: TextStyle(
 													  		fontSize: (constraints.maxWidth <= 600) ? constraints.maxWidth * 0.3 : 
 																	(constraints.maxWidth <= 800) ? constraints.maxWidth * 0.15 : constraints.maxWidth * 0.15,
@@ -79,9 +76,7 @@ class _TasbihPageState extends State<TasbihPage>{
 												child: ButtonResetWidget(
 													constraints: constraints, 
 													onTap: (){
-														setState((){
-															_count = 0;
-														});
+														tasbihCount.resetCount();
 													}
 												),
 											),
@@ -90,9 +85,7 @@ class _TasbihPageState extends State<TasbihPage>{
 											ButtonCountWidget(
 												constraints: constraints, 
 												onTap: (){
-													setState((){
-														_count++;
-													});
+													tasbihCount.increment();
 												},
 											),
 										],
@@ -124,7 +117,7 @@ class _TasbihPageState extends State<TasbihPage>{
 													]
 												),
 												child: Center(
-													child: Text('$_count', 
+													child: Text(tasbihCount.count.toString(), 
 													  	style: TextStyle(
 													  		fontSize: (constraints.maxWidth <= 600) ? constraints.maxWidth * 0.3 : 
 																	(constraints.maxWidth <= 800) ? constraints.maxWidth * 0.15 : constraints.maxWidth * 0.15,
@@ -136,21 +129,13 @@ class _TasbihPageState extends State<TasbihPage>{
 											//Button Reset
 											ButtonResetWidget(
 												constraints: constraints, 
-												onTap: (){
-													setState((){
-														_count = 0;
-													});
-												}
+												onTap: () => tasbihCount.resetCount(),
 											),
 
 											//Button Count
 											ButtonCountWidget(
 												constraints: constraints, 
-												onTap: (){
-													setState((){
-														_count++;
-													});
-												},
+												onTap: () => tasbihCount.increment(),
 											),
 										],
 									),

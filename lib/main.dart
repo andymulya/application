@@ -1,5 +1,6 @@
 import 'package:application/providers/surah_detail_provider.dart';
 import 'package:application/providers/surah_list_provider.dart';
+import 'package:application/providers/tasbih_provider.dart';
 import 'package:application/views/pages/splash_screen_page.dart';
 import 'package:application/views/pages/surah_detail_page.dart';
 import 'package:application/views/pages/tasbih_page.dart';
@@ -22,6 +23,7 @@ class Application extends StatelessWidget{
       providers: [
         ChangeNotifierProvider(create: (context) => SurahListProvider()),
         ChangeNotifierProvider(create: (context) => SurahDetailProvider()),
+        ChangeNotifierProvider(create: (context) => TasbihProvider()),
       ],
       child: MaterialApp(
         theme: ThemeData(
