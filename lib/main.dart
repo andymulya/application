@@ -10,9 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'views/pages/surah_list_page.dart';
 
-void main(){
-  runApp(const Application());
-}
+void main() => runApp(const Application());
 
 class Application extends StatelessWidget{
   const Application({super.key});
